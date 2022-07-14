@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 from typing import List
 def get_requirements_list()->List[str]:
     """
@@ -6,17 +6,15 @@ def get_requirements_list()->List[str]:
         list
     """
     with open('requirements.txt') as requirement_file:
-        return requirement_file.readlines()
+        return requirement_file.readlines().remove('-e .')
 
 setup(
 name='Housing Predictor',
-version='0.0.1',
+version='0.0.3',
 author='Aditya',
 description='This is the 1st FSDS nov batch ML Project',
-packages=['housing'],
+packages=find_packages(),
 install_requires=get_requirements_list()
 )
 
-if __name__ == '__main__':
-    print(get_requirements_list())
 
